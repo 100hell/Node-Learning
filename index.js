@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import { signupUser } from "./controllers/signupUser.js";
 import { loginUser } from "./controllers/loginUser.js";
+import getExploreUsers from "./controllers/getExploreUsers.js";
+import followUnfollowUser from "./controllers/followUnfollowUser.js";
 
 const app = express();
 
@@ -22,11 +24,12 @@ mongoose
 // Middleware to parse JSON bodies
 app.use(cors());
 app.use(express.json());
-
 // Define a route for the root URL
 app.get("/getData", getDataMiddleware, getData);
 app.post("/signup", signupUser);
 app.post("/login", loginUser);
+app.get("/api/users/explore", getExploreUsers);
+app.post("/api/users/follow/:id", followUnfollowUser);
 
 const PORT = 3000;
 app.listen(PORT, () => {

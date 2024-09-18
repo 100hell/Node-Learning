@@ -13,7 +13,6 @@ export const loginUser = async (req, res) => {
       console.log("not done");
       return res.status(500).json({ error: "invalid username or passsword." });
     }
-    console.log("done");
     res.status(200).json({
       _id: user._id,
       name: user.name,

@@ -17,6 +17,7 @@ export const signupUser = async (req, res) => {
       password: hashedPassword,
     });
     await Newuser.save();
+
     if (Newuser) {
       res.status(200).json({
         _id: Newuser._id,
